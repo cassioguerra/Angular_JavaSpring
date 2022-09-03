@@ -1,20 +1,32 @@
-<table mat-table [dataSource]="courses" class="mat-elevation-z8">
+<mat-card>
+  <mat-toolbar color="primary">
+    Coisas Disponívei </mat-toolbar>
+
+    <div *ngIf="courses$ | async as courses; else loading">
+  <table mat-table [dataSource]="courses" class="mat-elevation-z8">
+    <!-- Name Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let couser">{{ couser.nome }}</td>
+    </ng-container>
+
+    <!-- TIPO Column -->
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef>Tipo</th>
+      <td mat-cell *matCellDef="let couser">{{ couser.tipo }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
 
 
+<ng-template #loading>
+  <div class="loanding-spinner">
+  <mat-spinner></mat-spinner>
+</div>
+</ng-template>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef> nome </th>
-    <td mat-cell *matCellDef="let couser"> {{ couser.nome }} </td>
-  </ng-container>
 
-  <!-- TIPO Column -->
-  <ng-container matColumnDef="tipo">
-    <th mat-header-cell *matHeaderCellDef> tipo </th>
-    <td mat-cell *matCellDef="let couser"> {{ couser.tipo }} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
+</mat-card>
