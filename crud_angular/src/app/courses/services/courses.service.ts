@@ -24,4 +24,8 @@ private readonly API = 'api/courses'
     );
 
   }
+
+  save(record:Couser){
+   return this.httpClient.post<Couser>(this.API, record).pipe(first());
+  }
 }
