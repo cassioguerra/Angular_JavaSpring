@@ -25,21 +25,26 @@ public class CourserController {
     }
 
     // buscar por id;
-    @GetMapping("{id}")
+   /*  @GetMapping("{id}")
     public ResponseEntity<Course> findById(@PathVariable Long id){
         return courserRepository.findById(id)
                 .map(recordFound -> ResponseEntity.ok().body(recordFound))
                 // condição de se não
                 .orElse(ResponseEntity.notFound().build());
     }
-
+*/
     // PARA SALVAR  O PRODUTO
+   // @RequestMapping(method = RequestMethod.POST) (para declara a criação de outra forma )
+
     @PostMapping
-    @ResponseStatus(code = HttpStatus.CREATED)
+    @ResponseStatus(code = HttpStatus.CREATED) // para colocara status nem manusear 
     public Course create(@RequestBody Course course){
-        return courserRepository.save(course);
+       return courserRepository.save(course);
+      // return  ResponseEntity.status(HttpStatus.CREATED)
+      // .body(courserRepository.save(course))
     }
     
-
+// para editar
+  
 
 }

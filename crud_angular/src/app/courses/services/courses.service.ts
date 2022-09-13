@@ -3,7 +3,6 @@ import { Couser } from '../model/couser';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/internal/operators/tap';
 import { first } from 'rxjs/internal/operators/first';
-import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
