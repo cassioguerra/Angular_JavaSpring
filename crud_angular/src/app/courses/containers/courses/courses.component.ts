@@ -1,8 +1,8 @@
-import { ErrorDialogComponent } from './../../shared/components/error-dialog/error-dialog.component';
-import { CoursesService } from './../services/courses.service';
+import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
+import { CoursesService } from '../../services/courses.service';
 
 import { Component, OnInit } from '@angular/core';
-import { Couser } from '../model/couser';
+import { Couser } from '../../model/couser';
 import { catchError, Observable, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Action } from 'rxjs/internal/scheduler/Action';
@@ -49,5 +49,9 @@ courses$: Observable<Couser[]>;
 
   onAdd(){
     this.router.navigate(['new'], {relativeTo: this.route})
+  }
+
+  onEdit(course: Couser){
+    this.router.navigate(['edit', course._id], {relativeTo: this.route})
   }
 }

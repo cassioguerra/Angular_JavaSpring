@@ -24,20 +24,23 @@ public class CourserController {
         return courserRepository.findAll();
     }
 
-    // buscar por id;
-   /*  @GetMapping("{id}")
+    // lista or id 
+    // @PathVariable: para informa que tem um ainformação no caminho de url;
+    //ResponseEntity: é uma entidade de resposta do spring  para retorno o curso;
+     @GetMapping("/{id}")
     public ResponseEntity<Course> findById(@PathVariable Long id){
         return courserRepository.findById(id)
+        // retorno ok se encontra o id 
                 .map(recordFound -> ResponseEntity.ok().body(recordFound))
                 // condição de se não
                 .orElse(ResponseEntity.notFound().build());
     }
-*/
+
     // PARA SALVAR  O PRODUTO
    // @RequestMapping(method = RequestMethod.POST) (para declara a criação de outra forma )
 
     @PostMapping
-    @ResponseStatus(code = HttpStatus.CREATED) // para colocara status nem manusear 
+    @ResponseStatus(code = HttpStatus.CREATED) // para colocara status para não manusear nem manusear 
     public Course create(@RequestBody Course course){
        return courserRepository.save(course);
       // return  ResponseEntity.status(HttpStatus.CREATED)

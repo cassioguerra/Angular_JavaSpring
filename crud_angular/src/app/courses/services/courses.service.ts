@@ -24,6 +24,10 @@ private readonly API = 'api/courses'
 
   }
 
+  loadById(id:string){
+   return this.httpClient.get<Couser>(`${this.API}/${id}`);
+  }
+
   save(record:Couser){
    return this.httpClient.post<Couser>(this.API, record).pipe(first());
   }
